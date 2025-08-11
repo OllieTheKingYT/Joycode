@@ -1,0 +1,1 @@
+All rights reserved. This code may not be copied, modified, distributed, or used in any form without explicit written permission from the author. Copyright (c) 2025 OllieTheKingYT and JoyCode Studios. All rights reserved.
