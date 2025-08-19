@@ -1,0 +1,1 @@
+Warning! Due to file size issues this installer is not currently available for download. We eccomend you download and install our Android app, ***soon*** available on the Google Play Store, currently available on [this](https://github.com/OllieTheKingYT/Joycode-Android/releases/tag/v1.0.0) GitHub release.
