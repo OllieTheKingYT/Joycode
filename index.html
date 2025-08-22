@@ -163,6 +163,13 @@
           document.getElementById('login-message').textContent = error.message;
         });
     }
+
+    // ✅ Redirect logged-in users to home.html
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        window.location.href = "home.html";
+      }
+    });
   </script>
 </body>
 </html>

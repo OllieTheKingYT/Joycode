@@ -48,5 +48,29 @@
   <footer>
     <p>© JoyCode Studios – Tools built for creators</p>
   </footer>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBk_k17IxDi2AJmDmN-iHzTV7CSOQO_VZo",
+      authDomain: "joycode-studios.firebaseapp.com",
+      projectId: "joycode-studios",
+      storageBucket: "joycode-studios.appspot.com",
+      messagingSenderId: "633743383003",
+      appId: "1:633743383003:web:155a68ae785d38c2096ffe"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // ✅ Redirect to index.html if not logged in
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "index.html";
+      }
+    });
+  </script>
 </body>
 </html>
