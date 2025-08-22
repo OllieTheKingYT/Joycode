@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JoyCode Studios - Login</title>
   <style>
-    /* ===== Your Styling ===== */
     body {
       margin: 0;
       padding: 0;
@@ -71,7 +70,6 @@
   <main>
     <div class="login-card">
       <h2>Login to Continue</h2>
-      <!-- Email/Password -->
       <input type="email" id="email" placeholder="Email">
       <input type="password" id="password" placeholder="Password">
       <button class="email-btn" onclick="loginEmail()">Login with Email</button>
@@ -79,9 +77,7 @@
 
       <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.2)">
 
-      <!-- Google -->
       <button class="google-btn" onclick="loginWithGoogle()">Continue with Google</button>
-      <!-- GitHub -->
       <button class="github-btn" onclick="loginWithGitHub()">Continue with GitHub</button>
 
       <p id="login-message"></p>
@@ -93,9 +89,9 @@
     &copy; 2025 JoyCode Studios
   </footer>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+  <!-- ✅ Correct Firebase SDKs for browser use -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyBk_k17IxDi2AJmDmN-iHzTV7CSOQO_VZo",
