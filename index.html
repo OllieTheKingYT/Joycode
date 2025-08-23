@@ -19,14 +19,48 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    header { text-align: center; padding: 2rem; backdrop-filter: blur(8px); }
-    header h1 { font-size: 3rem; margin: 0; letter-spacing: 1px; }
-    header p { font-size: 1.2rem; margin-top: 0.5rem; color: #e0e0ff; }
-    nav ul { display: flex; justify-content: center; list-style: none; margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0.4); }
-    nav ul li { margin: 0 1rem; }
-    nav ul li a { color: #fff; text-decoration: none; padding: 1rem; display: block; transition: all 0.3s ease; }
-    nav ul li a:hover { color: #ffb3ec; text-shadow: 0 0 5px #ffb3ec; }
-    main { padding: 2rem; max-width: 500px; margin: auto; }
+    header {
+      text-align: center;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #e0e0ff;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    nav ul li {
+      margin: 0 1rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ffb3ec;
+      text-shadow: 0 0 5px #ffb3ec;
+    }
+    main {
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+    }
     .login-card {
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -65,7 +99,21 @@
     .github-btn:hover { background-color: #24292e; }
     .email-btn { background-color: #2a5298; color: white; }
     .email-btn:hover { background-color: #1e3c72; }
-    footer { text-align: center; padding: 1rem; background-color: rgba(0, 0, 0, 0.4); color: #ccc; margin-top: 2rem; }
+    .anon-btn {
+      background-color: #555;
+      color: #fff;
+      font-style: italic;
+    }
+    .anon-btn:hover {
+      background-color: #777;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #ccc;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -90,7 +138,7 @@
       </button>
 
       <button class="github-btn" onclick="loginWithGitHub()">
-        <img src="./github.png" alt="GitHub">
+        <img src="github.png" alt="GitHub">
         Continue with GitHub
       </button>
 
@@ -123,6 +171,7 @@
       const password = document.getElementById('password').value;
       auth.signInWithEmailAndPassword(email, password)
         .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
           window.location.href = "home.html";
         })
         .catch(error => {
@@ -135,6 +184,7 @@
       const password = document.getElementById('password').value;
       auth.createUserWithEmailAndPassword(email, password)
         .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
           window.location.href = "home.html";
         })
         .catch(error => {
@@ -146,6 +196,7 @@
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
         .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
           window.location.href = "home.html";
         })
         .catch(error => {
@@ -157,6 +208,7 @@
       const provider = new firebase.auth.GithubAuthProvider();
       auth.signInWithPopup(provider)
         .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
           window.location.href = "home.html";
         })
         .catch(error => {
@@ -164,9 +216,20 @@
         });
     }
 
-    // ✅ Redirect logged-in users to home.html
+    function loginAnonymously() {
+      auth.signInAnonymously()
+        .then(() => {
+          localStorage.setItem("isAnonymousUser", "true");
+          window.location.href = "home.html";
+        })
+        .catch(error => {
+          document.getElementById('login-message').textContent = error.message;
+        });
+    }
+
     auth.onAuthStateChanged(user => {
       if (user) {
+        localStorage.setItem("isAnonymousUser", user.isAnonymous ? "true" : "false");
         window.location.href = "home.html";
       }
     });
