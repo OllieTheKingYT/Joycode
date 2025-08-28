@@ -92,7 +92,7 @@
       if (email) {
         auth.sendPasswordResetEmail(email)
           .then(() => {
-            alert("📧 Password reset email sent!");
+            alert("📧 Password reset email sent! Check your spam folder, it may be sent their!");
           })
           .catch(error => {
             alert("Reset error: " + error.message);
