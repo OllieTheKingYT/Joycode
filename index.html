@@ -35,28 +35,6 @@
       margin-top: 0.5rem;
       color: #e0e0ff;
     }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-    nav ul li {
-      margin: 0 1rem;
-    }
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      padding: 1rem;
-      display: block;
-      transition: all 0.3s ease;
-    }
-    nav ul li a:hover {
-      color: #ffb3ec;
-      text-shadow: 0 0 5px #ffb3ec;
-    }
     main {
       padding: 2rem;
       max-width: 500px;
@@ -101,9 +79,17 @@
     .email-btn { background-color: #2a5298; color: white; }
     .email-btn:hover { background-color: #1e3c72; }
     .anon-btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem;
+      width: 95%;
+      border-radius: 5px;
+      font-style: italic;
       background-color: #555;
       color: #fff;
-      font-style: italic;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: background-color 0.3s ease;
     }
     .anon-btn:hover {
       background-color: #777;
@@ -143,8 +129,12 @@
         Continue with GitHub
       </button>
 
+      <a href="home-anon.html" class="anon-btn">Continue as Guest</a>
+      <p style="font-size: 0.9rem; color: #ccc; margin-top: 0.5rem;">
+        Guest mode has limited access. No data will be saved.
+      </p>
+
       <p id="login-message"></p>
-      <p id="user-info"></p>
     </div>
   </main>
 
@@ -216,24 +206,6 @@
           document.getElementById('login-message').textContent = error.message;
         });
     }
-
-    function loginAnonymously() {
-      auth.signInAnonymously()
-        .then(() => {
-          localStorage.setItem("isAnonymousUser", "true");
-          window.location.href = "home.html";
-        })
-        .catch(error => {
-          document.getElementById('login-message').textContent = error.message;
-        });
-    }
-
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        localStorage.setItem("isAnonymousUser", user.isAnonymous ? "true" : "false");
-        window.location.href = "home.html";
-      }
-    });
   </script>
 </body>
 </html>

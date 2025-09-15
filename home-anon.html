@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JoyCode Studios</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>JoyCode Studios</h1>
+    <p>Creative tools and projects for Minecraft and beyond</p>
+  </header>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="feedcontact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Tools Section -->
+  <section id="tools">
+    <h2>🛠️ Tools</h2>
+    <ul>
+      <li><a href="https://pack-manifest-generator.pages.dev/">Pack Manifest Generator</a></li>
+      <li><a href="https://uuidforge.pages.dev/">UUID Forge</a></li>
+      <li><a href="grate.html">The Grate Mice War Download</a></li> 
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Find us on <a href="https://github.com/olliethekingyt">GitHub</a>  
+      or send feedback via our <a href="feedcontact-anon.html">form</a>
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© Copyright 2025 JoyCode Studios</p>
+  </footer>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBk_k17IxDi2AJmDmN-iHzTV7CSOQO_VZo",
+      authDomain: "joycode-studios.firebaseapp.com",
+      projectId: "joycode-studios",
+      storageBucket: "joycode-studios.appspot.com",
+      messagingSenderId: "633743383003",
+      appId: "1:633743383003:web:155a68ae785d38c2096ffe"
+    };
+
+    // Init
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Redirect if not logged in
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "index.html";
+      }
+    });
+  </script>
+</body>
+</html>
