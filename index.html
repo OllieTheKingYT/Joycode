@@ -1,94 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JoySearch</title>
-  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="/manifest.json">
+  <title>JoyCode Studios - Login</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298, #ff6ec4);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+      color: #fff;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #e0e0ff;
+    }
+    main {
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+    }
+    .login-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .login-card input {
+      width: 90%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .login-card button {
+      width: 95%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      gap: 8px;
     }
-    .logo {
-      font-size: 56px;
-      font-weight: bold;
-      margin-bottom: 30px;
+    .login-card button img {
+      height: 20px;
     }
-    .joy {
-      color: #3d7cf1;
+    .google-btn { background-color: #DB4437; color: white; }
+    .google-btn:hover { background-color: #c23321; }
+    .github-btn { background-color: #333; color: white; }
+    .github-btn:hover { background-color: #24292e; }
+    .email-btn { background-color: #2a5298; color: white; }
+    .email-btn:hover { background-color: #1e3c72; }
+    .anon-btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.7rem;
+      width: 95%;
+      border-radius: 5px;
+      font-style: italic;
+      background-color: #555;
+      color: #fff;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: background-color 0.3s ease;
     }
-    .search {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-    .search-box {
-      display: flex;
-      align-items: center;
-      width: 500px;
-      max-width: 90%;
-      border: 1px solid #dfe1e5;
-      border-radius: 24px;
-      padding: 10px 16px;
-      background: #fff;
-      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-    }
-    .search-box input {
-      border: none;
-      outline: none;
-      flex: 1;
-      font-size: 16px;
-    }
-    .buttons {
-      margin-top: 24px;
-      display: flex;
-      gap: 12px;
-    }
-    .buttons button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      background: #f8f9fa;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .buttons button:hover {
-      background: #e8eaed;
+    .anon-btn:hover {
+      background-color: #777;
     }
     footer {
-      position: absolute;
-      bottom: 16px;
-      font-size: 14px;
-      color: #70757a;
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #ccc;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <div class="logo">
-    <span class="joy">Joy</span>Search
-  </div>
-  <form class="search" action="https://www.google.com/search" method="GET">
-    <div class="search-box">
-      <input type="text" name="q" placeholder="Search JoySearch or type a URL">
-    </div>
-    <div class="buttons">
-      <button type="submit">JoySearch</button>
-      <button type="button"
-        onclick="window.location='https://www.google.com/search?btnI=1&q='+encodeURIComponent(this.form.q.value)">
-        I'm Feeling Joyful
+  <header>
+    <h1>JoyCode Studios</h1>
+    <p>Founder Access Portal</p>
+  </header>
+
+  <main>
+    <div class="login-card">
+      <h2>Login to Continue</h2>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button class="email-btn" onclick="loginEmail()">Login with Email</button>
+      <button class="email-btn" onclick="signupEmail()">Sign Up with Email</button>
+
+      <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.2)">
+
+      <button class="google-btn" onclick="loginWithGoogle()">
+        <img src="google.png" alt="Google">
+        Continue with Google
       </button>
+
+      <button class="github-btn" onclick="loginWithGitHub()">
+        <img src="github.png" alt="GitHub">
+        Continue with GitHub
+      </button>
+
+      <a href="home-anon.html" class="anon-btn">Continue as Guest</a>
+      <p style="font-size: 0.9rem; color: #ccc; margin-top: 0.5rem;">
+        Guest mode has limited access. No data will be saved.
+      </p>
+
+      <p id="login-message"></p>
     </div>
-  </form>
+  </main>
+
   <footer>
-    Powered by Google Search. Built and coded by JoyCode Studios.
+    &copy; 2025 JoyCode Studios. <a href="https://joycode-studios-policies.pages.dev" style="color: #1c5a71;">Privacy Policy</a>
   </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBk_k17IxDi2AJmDmN-iHzTV7CSOQO_VZo",
+      authDomain: "joycode-studios.firebaseapp.com",
+      projectId: "joycode-studios",
+      storageBucket: "joycode-studios.appspot.com",
+      messagingSenderId: "633743383003",
+      appId: "1:633743383003:web:155a68ae785d38c2096ffe"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function loginEmail() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
+          window.location.href = "home.html";
+        })
+        .catch(error => {
+          document.getElementById('login-message').textContent = error.message;
+        });
+    }
+
+    function signupEmail() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
+          window.location.href = "home.html";
+        })
+        .catch(error => {
+          document.getElementById('login-message').textContent = error.message;
+        });
+    }
+
+    function loginWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
+          window.location.href = "home.html";
+        })
+        .catch(error => {
+          document.getElementById('login-message').textContent = error.message;
+        });
+    }
+
+    function loginWithGitHub() {
+      const provider = new firebase.auth.GithubAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(() => {
+          localStorage.setItem("isAnonymousUser", "false");
+          window.location.href = "home.html";
+        })
+        .catch(error => {
+          document.getElementById('login-message').textContent = error.message;
+        });
+    }
+  </script>
 </body>
 </html>
