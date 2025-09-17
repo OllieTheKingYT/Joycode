@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subscribe to JoyCode Studios</title>
+  <title>JoyCode Studios – Newsletter & Staff Drafts</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -36,20 +36,76 @@
       margin-bottom: 30px;
     }
 
-    .kit-form {
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       margin-top: 20px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 1em;
+      background-color: #0078D7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .footer-notes {
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .divider {
+      margin: 60px 0 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Join the newsletter.</h1>
-    <p>Subscribe for updates. No spam, but just check spam anyways, email systems can be quirky.</p>
+    <h1>Subscribe to JoyCode Studios</h1>
+    <p>Get updates. No spam — but check spam anyway, email systems can be quirky.</p>
 
     <div class="kit-form">
       <!-- Kit Embed Code -->
       <script async data-uid="2ea4ec040a" src="https://studios-joycode.kit.com/2ea4ec040a/index.js"></script>
     </div>
+
+    <div class="divider">Staff Draft Submission</div>
+    <p>This section is for JoyCode Studios staff only. Submit your newsletter draft below.</p>
+
+    <form action="https://formsubmit.co/macaulayfernandeschannel@gmail.com" method="POST">
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="text" name="Code" placeholder="JoyCode" required />
+      <input type="text" name="Subject" placeholder="Newsletter Subject" required />
+      <textarea name="Content" rows="6" placeholder="Draft content, notes, or lore drop..." required></textarea>
+
+      <button type="submit">Submit Draft</button>
+
+      <div class="footer-notes">
+        <strong>Reminder:</strong><br>
+        Deadline, and topic for newsletter drafts coming soon.
+      </div>
+    </form>
   </div>
 </body>
 </html>
